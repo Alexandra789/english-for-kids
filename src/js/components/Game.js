@@ -1,7 +1,7 @@
 import {
   ANSWER_RIGHT, ANSWER_WRONG, STAT_GUESS, STAT_ERROR, GAMEOVER_WIN, GAMEOVER_LOSE,
-} from './constants';
-import cards from './cards';
+} from '../constants/constants';
+import cards from '../constants/cards';
 
 export class Game {
   constructor(layout, statManager) {
@@ -33,7 +33,7 @@ export class Game {
     }
 
     this.wrongAnswers ? this.showGameOver(GAMEOVER_LOSE) : this.showGameOver(GAMEOVER_WIN);
-  
+
     return true;
   }
 
@@ -85,13 +85,13 @@ export class Game {
       this.correctAnswers += 1;
       this.statManager.addStat(this.selectedWord, STAT_GUESS);
       this.layout.playAudio('correct');
-      star = '<img class="star" src="../assets/images/star-win.svg">';
+      star = '<img class="star" src="../res/images/star-win.svg">';
       setTimeout(() => this.selectNewWord(), 1000);
     } else {
       this.wrongAnswers += 1;
       this.statManager.addStat(this.selectedWord, STAT_ERROR);
       this.layout.playAudio('error');
-      star = '<img class="star" src="../assets/images/star.svg">';
+      star = '<img class="star" src="../res/images/star.svg">';
     }
 
     this.layout.starContainer.innerHTML += star;

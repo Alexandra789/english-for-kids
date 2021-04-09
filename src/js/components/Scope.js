@@ -1,4 +1,4 @@
-import cards from './cards';
+import cards from '../constants/cards';
 
 export class Scope {
   constructor(layout, statManager) {

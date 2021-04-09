@@ -1,5 +1,5 @@
-import { STAT_CLICK } from './constants';
-import cards from './cards';
+import { STAT_CLICK } from '../constants/constants';
+import cards from '../constants/cards';
 import { StatManager } from './StatManager';
 import { Scope } from './Scope';
 import { Game } from './Game';
@@ -43,10 +43,10 @@ export class Layout {
     }
     cardElement.innerHTML = `
           <div class = front>
-            <img class="card-img-top" src="../assets/images/${image}" alt="${title}">
+            <img class="card-img-top" src="../res/images/${image}" alt="${title}">
           </div> 
           <div class="back">
-              <img class="card-img-top" src="../assets/images/${image}" alt="${title}">
+              <img class="card-img-top" src="../res/images/${image}" alt="${title}">
           </div>
           <div class="card-body">
             <p class="card-text">${title}
@@ -81,7 +81,7 @@ export class Layout {
     this.cardsCategoryWrapper.style.display = 'none';
     this.activeCategoryIndex = numberCategory;
     this.togglePlayButton();
-    const rotateImg = ' <img class="rotate" src="../assets/images/rotate.svg">';
+    const rotateImg = ' <img class="rotate" src="../res/images/rotate.svg">';
     for (let i = 0; i < cards[numberCategory].length; i += 1) {
       this.fragment.appendChild(
         this.getCard(cards[numberCategory][i].word, cards[numberCategory][i].image, rotateImg),
@@ -158,12 +158,12 @@ export class Layout {
   playAudio(nameCard) {
     const audio = new Audio();
     if (nameCard === 'correct' || nameCard === 'error') {
-      audio.src = `../assets/audio/${nameCard}.mp3`;
+      audio.src = `../res/audio/${nameCard}.mp3`;
     }
     for (let i = 0; i < cards.length; i += 1) {
       for (let j = 0; j < cards[i].length; j += 1) {
         if (nameCard === cards[i][j].word) {
-          audio.src = `../assets/${cards[i][j].audioSrc}`;
+          audio.src = `../res/${cards[i][j].audioSrc}`;
         }
       }
     }
@@ -187,7 +187,7 @@ export class Layout {
   }
 
   rotateCard(e) {
-    const rotateImg = '<img class="rotate" src="../assets/images/rotate.svg">';
+    const rotateImg = '<img class="rotate" src="../res/images/rotate.svg">';
     const card = e.closest('.card');
     card.classList.add('hover');
     e.parentNode.classList.add('hover');
